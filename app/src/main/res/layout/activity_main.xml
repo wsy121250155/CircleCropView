@@ -7,14 +7,15 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <cn.edu.nju.wsy.circlecropview.CircleWindowView
+    <cn.edu.nju.wsy.circlecropview.CircleWindowView xmlns:wsy="http://schemas.android.com/apk/res/cn.edu.nju.wsy.circlecropview"
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="@android:color/holo_blue_bright"
         android:scaleType="centerInside"
-        android:src="@drawable/jjw" />
+        android:src="@drawable/jjw"
+        wsy:OcclusionColor="#000000" />
 
     <Button
         android:layout_width="wrap_content"

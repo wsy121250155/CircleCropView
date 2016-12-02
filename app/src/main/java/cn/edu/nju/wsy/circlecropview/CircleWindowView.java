@@ -2,6 +2,7 @@ package cn.edu.nju.wsy.circlecropview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -47,6 +48,10 @@ public class CircleWindowView extends ImageView {
         radius = MIN_RADIUS;
         mode = STATE.ZERO;
 
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleWindowView);
+        OcclusionColor = typedArray.getColor(R.styleable.CircleWindowView_OcclusionColor, 0xe0000000);
+        typedArray.recycle();
+
         Drawable d = getDrawable();
         double imgWidth = d.getIntrinsicWidth();
         double imgHeight = d.getIntrinsicHeight();
@@ -87,6 +92,7 @@ public class CircleWindowView extends ImageView {
     private static final int MIN_RADIUS = 200;
     private int height;
     private int width;
+    private int OcclusionColor = 0xe0000000;
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -97,7 +103,7 @@ public class CircleWindowView extends ImageView {
 
         int saveCount = canvas.saveLayer(0, 0, width, height, paint,
                 Canvas.ALL_SAVE_FLAG);
-        paint.setColor(0xe0000000);
+        paint.setColor(OcclusionColor);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
 
